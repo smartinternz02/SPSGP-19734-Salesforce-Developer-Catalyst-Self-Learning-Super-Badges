@@ -1,0 +1,16 @@
+@isTest
+private class parkLocatorTest {
+    @isTest static void testCallout() {              
+         This causes a fake response to be generated
+        Test.setMock(WebServiceMock.class, new parkserviceMock());
+         Call the method that invokes a callout
+        string country  = 'India';
+        liststring result = parkLocator.country(country);
+        liststring parks = new liststring();
+               parks.add('nehru zoo');
+               parks.add('krishnakanth park');
+               parks.add('national park');
+         Verify that a fake result is returned
+        System.assertEquals(parks, result); 
+    }
+}

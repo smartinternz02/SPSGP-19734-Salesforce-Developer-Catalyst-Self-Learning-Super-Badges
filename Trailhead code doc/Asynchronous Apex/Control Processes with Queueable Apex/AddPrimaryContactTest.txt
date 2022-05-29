@@ -1,0 +1,29 @@
+@isTest
+public class AddPrimaryContactTest {
+    
+    static testmethod void testQueueable(){
+        List<Account> testAccounts =new List<Account>();
+        for(integer i=0;i<50;i++){
+            testAccounts.add(new Account(Name='Account'+i,Billingstate='CA'));
+        }
+        for(integer j=0;j<50;j++){
+            testAccounts.add(new Account(Name='Account'+j,Billingstate='NY'));
+        
+    }
+        insert testAccounts;
+        
+        contact testcontact = new contact(FirstName = 'Returi', LastName='Siva');
+        insert testcontact;
+        
+        AddPrimaryContact addit = new AddPrimaryContact(testcontact, 'CA');
+        
+        Test.startTest();
+        System.enqueueJob(addit);
+        Test.stopTest();
+        
+        System.assertEquals(50,[select count()from contact where accountId in(select Id from Account where Billingstate='CA')]);
+        
+    }
+        
+
+}

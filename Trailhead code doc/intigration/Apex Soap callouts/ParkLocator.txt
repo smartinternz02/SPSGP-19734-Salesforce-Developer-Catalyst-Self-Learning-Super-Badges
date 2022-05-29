@@ -1,0 +1,7 @@
+public class ParkLocator {
+    public static List<string> country(string country){
+        parkservice.parksImplport parkservice =
+            new parkservice.parksImplport();
+        return parkservice.bycountry(country);
+    }
+}

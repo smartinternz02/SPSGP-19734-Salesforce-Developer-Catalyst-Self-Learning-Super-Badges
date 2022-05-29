@@ -1,0 +1,13 @@
+@istest
+public class TestVerifyDate {
+   
+    @istest static void test1(){
+        Date d= verifyDate.checkDates(Date.parse('05/01/2022'),Date.parse('05/03/2022'));
+        system.assertEquals(Date.parse('05/03/2022'), d);
+    }
+    
+        @istest static void test2(){
+        Date d= verifyDate.checkDates(Date.parse('05/01/2022'),Date.parse('07/03/2022'));
+        system.assertEquals(Date.parse('05/31/2022'), d);
+    }
+}
